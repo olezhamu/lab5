@@ -2,7 +2,7 @@ package Main;
 
 import Commands.*;
 import Utils.CollectionContainer;
-import Vehicle.Vehicle;
+import Vehicle.*;
 import Vehicle.VehicleType;
 
 import java.util.Arrays;
@@ -21,6 +21,8 @@ public class Main {
         System.out.println(new Add(new Vehicle("vehicle", 1, 1, 1, 1, VehicleType.SUBMARINE)).execute());
         System.out.println(new Info().execute());
          */
+
+        Vehicle vehicle = new Builder("name", 10.0, 10.0, 10, 10, VehicleType.HELICOPTER).build();
 
         System.out.println("finish");
     }
