@@ -2,7 +2,10 @@
 
 package Commands;
 
+import Utils.CollectionContainer;
 import Vehicle.Vehicle;
+
+import java.util.function.Predicate;
 
 
 public class RemoveById implements Command{

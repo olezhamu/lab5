@@ -2,13 +2,17 @@
 
 package Commands;
 
+import Utils.CollectionContainer;
+import Vehicle.Vehicle;
+
+import java.util.LinkedList;
+
 public class Info implements Command{
     public Info(){}
 
     @Override
     public String execute() {
         String output = "vehicle, ";
-        System.out.println("hashmap");
         //output += (string) collection.getCreationDate() + ", ";
         output += collection.size() + "";
         return output + "\n";
