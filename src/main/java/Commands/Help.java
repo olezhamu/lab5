@@ -2,7 +2,7 @@
 
 package Commands;
 
-import Utils.CommandContainer;
+import utils.CommandContainer;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public class Help implements Command{
     @Override
     public String execute() {
         String output = "";
-        HashMap<String, Command> commands = new CommandContainer().getCommandContainer();
+        HashMap<String, Command> commands = CommandContainer.getCommandContainer();
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
             output += entry.getKey() + " : " + entry.getValue().toString() + "\n";
         }
