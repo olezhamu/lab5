@@ -1,4 +1,4 @@
-package Vehicle;
+package vehicle;
 
 public class Vehicle {
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -19,6 +19,10 @@ public class Vehicle {
         capacity = builder.capacity;
         fuelConsumption = builder.fuelConsumption;
         type = builder.type;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

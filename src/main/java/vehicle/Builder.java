@@ -1,4 +1,4 @@
-package Vehicle;
+package vehicle;
 
 import java.time.ZonedDateTime;
 
@@ -13,7 +13,7 @@ public class Builder {
     protected VehicleType type; //Поле не может быть null
     private static Integer count = 0;
 
-    public Builder(String name, Double x, Double y, long enginePower, long capacity, VehicleType type) {
+    public Builder(String name, Double x, double y, long enginePower, long capacity, VehicleType type) {
         this.id = count++;
         this.name = name;
         this.coordinates = new Coordinates(x, y);
@@ -23,9 +23,9 @@ public class Builder {
         this.type = type;
     }
 
-    public Double fuelConsumption(Double fuelConsumption) {
+    public Builder fuelConsumption(Double fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
-        return fuelConsumption;
+        return this;
     }
 
     public Vehicle build() {
