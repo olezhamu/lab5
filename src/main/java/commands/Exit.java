@@ -1,13 +1,12 @@
 //завершить программу (без сохранения в файл)
 
-package Commands;
+package commands;
 
 public class Exit implements Command{
-    public Exit(){}
-
     @Override
-    public String execute() {
-        return "";
+    public String execute(String argument) {
+
+        return "bye! ;p";
     }
 
     @Override

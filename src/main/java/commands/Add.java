@@ -1,19 +1,14 @@
 //добавить новый элемент в коллекцию
 
-package Commands;
+package commands;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
+import vehicle.VehicleParser;
 
 public class Add implements Command {
-    private Vehicle vehicle;
-
-    public Add(Vehicle vehicle){
-        this.vehicle = vehicle;
-    }
-
     @Override
-    public String execute() {
-        collection.add(vehicle);
+    public String execute(String argument) {
+        collection.add(new VehicleParser().parse(argument));
         return "element successfully added\n";
     }
 

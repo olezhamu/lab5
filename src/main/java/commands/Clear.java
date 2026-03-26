@@ -1,18 +1,16 @@
 //очистить коллекцию
 
-package Commands;
+package commands;
 
 import utils.CollectionContainer;
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
 import java.util.LinkedList;
 
 public class Clear implements Command{
-    public Clear(){}
-
     @Override
-    public String execute() {
-        new CollectionContainer().setCollection(new LinkedList<Vehicle>());
+    public String execute(String argument) {
+        CollectionContainer.setCollection(new LinkedList<Vehicle>());
         return "collection successfully cleared\n";
     }
 

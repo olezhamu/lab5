@@ -1,22 +1,18 @@
 //обновить значение элемента коллекции, id которого равен заданному
 
-package Commands;
+package commands;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
+import vehicle.VehicleParser;
 
 import java.util.*;
 
 public class Update implements Command{
-    private Integer id;
-    private Vehicle vehicle;
-
-    public Update(Integer id, Vehicle vehicle) {
-        this.id = id;
-        try {this.vehicle = vehicle;} catch (Exception e) {throw new CommandParameterException("update id", "vehicle");}
-    }
-
     @Override
-    public String execute() {
+    public String execute(String argument) {
+        String[] parts = argument.split("\\s+", 2);
+        Integer id = Integer.valueOf(parts[0]);
+        Vehicle vehicle = new VehicleParser().parse(parts[1]);
         LinkedList<Vehicle> newCollection = new LinkedList<Vehicle>();
         for (Vehicle vehicle1 : collection) {
             if (vehicle1.getId() == id) {

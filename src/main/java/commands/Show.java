@@ -1,14 +1,12 @@
 //вывести в стандартный поток вывода все элементы коллекции в строковом представлении
 
-package Commands;
+package commands;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
 public class Show implements Command{
-    public Show(){}
-
     @Override
-    public String execute() {
+    public String execute(String argument) {
         String output = "";
         for (Vehicle vehicle : collection) {
             output += vehicle.getInfo() + "\n";

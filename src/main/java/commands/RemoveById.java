@@ -1,19 +1,14 @@
 //удалить элемент из коллекции по его id
 
-package Commands;
+package commands;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
 
 public class RemoveById implements Command{
-    private Integer id;
-
-    public RemoveById(Integer id){
-        this.id = id;
-    }
-
     @Override
-    public String execute() {
+    public String execute(String argument) {
+        Integer id = Integer.valueOf(argument);
         for (Vehicle vehicle : collection) {
             if (id == vehicle.getId()){
                 collection.remove(vehicle);
