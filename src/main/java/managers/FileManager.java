@@ -1,11 +1,10 @@
 package managers;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import utils.CollectionContainer;
 import vehicle.Vehicle;
+import vehicle.VehicleParser;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,10 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FileManager {
-    private final ObjectMapper objectMapper;
+    private final VehicleParser vehicleParser;
 
     public FileManager() {
-        this.objectMapper = new ObjectMapper();
+        this.vehicleParser = new VehicleParser();
     }
 
     public List<String> readCommands(String fileName) throws IOException {
@@ -30,11 +29,24 @@ public class FileManager {
 
     public void readCollection(String fileName) throws IOException {
         Path path = Paths.get(fileName);
-        LinkedList<Vehicle> collection;
         if (!Files.exists(path)) {
             throw new IOException("Файл не найден: " + fileName);
-        } else {
-            collection = objectMapper.readValue(path.toFile(), new TypeReference<LinkedList<Vehicle>>() {});
+        }
+
+        LinkedList<Vehicle> collection = new LinkedList<>();
+
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(path.toFile()));
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) {
+                    continue;
+                }
+                Vehicle vehicle = vehicleParser.parse(line);
+                collection.add(vehicle);
+            }
         }
         CollectionContainer.setCollection(collection);
     }
@@ -44,6 +56,16 @@ public class FileManager {
         if (path.getParent() != null && !Files.exists(path.getParent())) {
             Files.createDirectories(path.getParent());
         }
-        objectMapper.writeValue(path.toFile(), CollectionContainer.getCollection());
+
+        LinkedList<Vehicle> collection = CollectionContainer.getCollection();
+        if (collection == null) {
+            throw new IllegalStateException("Коллекция не инициализирована");
+        }
+
+        try (PrintWriter writer = new PrintWriter(new FileOutputStream(path.toFile()))) {
+            for (Vehicle vehicle : collection) {
+                writer.println(vehicle.toData());
+            }
+        }
     }
 }

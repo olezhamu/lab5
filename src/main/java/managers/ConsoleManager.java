@@ -8,6 +8,11 @@ public class ConsoleManager {
     private final BufferedReader reader;
     private boolean isRunning;
 
+    public ConsoleManager() {
+        this.reader = new BufferedReader(new InputStreamReader(System.in));
+        this.isRunning = true;
+    }
+
     public void start() throws IOException {
         while (isRunning) {
             System.out.print("> ");
@@ -21,11 +26,6 @@ public class ConsoleManager {
             }
             new CommandManager().executeCommand(input);
         }
-    }
-
-    public ConsoleManager() {
-        this.reader = new BufferedReader(new InputStreamReader(System.in));
-        this.isRunning = true;
     }
 
     public String readLine() {
