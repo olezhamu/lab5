@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.Comparator;
 
 public class PrintFieldAscendingFuelConsumption implements Command{
+    public PrintFieldAscendingFuelConsumption(){}
     @Override
     public String execute(String argument) {
         List<Double> fuelConsumptions = new ArrayList<Double>(0);

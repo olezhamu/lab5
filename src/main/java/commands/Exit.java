@@ -3,9 +3,10 @@
 package commands;
 
 public class Exit implements Command{
+    public Exit(){}
+
     @Override
     public String execute(String argument) {
-
         return "bye! ;p";
     }
 

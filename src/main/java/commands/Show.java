@@ -5,11 +5,13 @@ package commands;
 import vehicle.Vehicle;
 
 public class Show implements Command{
+    public Show(){}
+
     @Override
     public String execute(String argument) {
         String output = "";
         for (Vehicle vehicle : collection) {
-            output += vehicle.getInfo() + "\n";
+            output += vehicle.getInfo();
         }
         return output;
     }

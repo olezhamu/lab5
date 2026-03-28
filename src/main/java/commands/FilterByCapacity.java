@@ -5,6 +5,8 @@ package commands;
 import vehicle.Vehicle;
 
 public class FilterByCapacity implements Command{
+    public FilterByCapacity(){}
+
     @Override
     public String execute(String argument) {
         long capacity = Long.parseLong(argument);

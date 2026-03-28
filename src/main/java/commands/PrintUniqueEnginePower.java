@@ -7,6 +7,8 @@ import vehicle.Vehicle;
 import java.util.*;
 
 public class PrintUniqueEnginePower implements Command{
+    public PrintUniqueEnginePower(){}
+
     @Override
     public String execute(String argument) {
         List<Long> enginePowers = new ArrayList<Long>(0);

@@ -5,6 +5,8 @@ package commands;
 import vehicle.VehicleParser;
 
 public class Add implements Command {
+    public Add(){}
+
     @Override
     public String execute(String argument) {
         collection.add(new VehicleParser().parse(argument));

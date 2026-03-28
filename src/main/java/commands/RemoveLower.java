@@ -9,11 +9,13 @@ import vehicle.VehicleParser;
 import java.util.LinkedList;
 
 public class RemoveLower implements Command{
+    public RemoveLower(){}
+
     @Override
     public String execute(String argument) {
         Vehicle vehicle = new VehicleParser().parse(argument);
         String output = "there aren't any lower elements";
-        LinkedList<Vehicle> newCollection = CollectionContainer.sortCollection(collection);
+        LinkedList<Vehicle> newCollection = new CollectionContainer().sortCollection(collection);
         for (Vehicle vehicleToCompare : collection) {
             if (newCollection.indexOf(vehicle) < newCollection.indexOf(vehicleToCompare)) {
                 newCollection.remove(vehicleToCompare);

@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class ExecuteScript implements Command{
+    public ExecuteScript(){}
+
     @Override
     public String execute(String argument) throws IOException {
         String fileName = argument;

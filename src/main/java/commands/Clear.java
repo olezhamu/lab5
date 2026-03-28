@@ -8,9 +8,11 @@ import vehicle.Vehicle;
 import java.util.LinkedList;
 
 public class Clear implements Command{
+    public Clear(){}
+
     @Override
     public String execute(String argument) {
-        CollectionContainer.setCollection(new LinkedList<Vehicle>());
+        collection.clear();
         return "collection successfully cleared\n";
     }
 

@@ -5,6 +5,8 @@ package commands;
 import utils.CollectionContainer;
 
 public class Info implements Command{
+    public Info(){}
+
     @Override
     public String execute(String argument) {
         String output = "vehicle, LinkedList";

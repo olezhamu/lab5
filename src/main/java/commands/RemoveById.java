@@ -6,6 +6,8 @@ import vehicle.Vehicle;
 
 
 public class RemoveById implements Command{
+    public RemoveById(){}
+
     @Override
     public String execute(String argument) {
         Integer id = Integer.valueOf(argument);
