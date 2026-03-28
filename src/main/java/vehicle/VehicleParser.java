@@ -22,11 +22,13 @@ public class VehicleParser {
             int capacity = Integer.parseInt(tokens[4]);
 
             Double fuelConsumption = null;
+            int tokenNumber = 5;
             if (tokens.length == 7) {
                 fuelConsumption = Double.parseDouble(tokens[5]);
+                tokenNumber++;
             }
 
-            VehicleType type = VehicleType.valueOf(tokens[-1].toUpperCase());
+            VehicleType type = VehicleType.valueOf(tokens[tokenNumber].toUpperCase());
 
             return new Builder(name, x, y, enginePower, capacity, type).fuelConsumption(fuelConsumption).build();
 

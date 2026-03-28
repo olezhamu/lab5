@@ -29,6 +29,10 @@ public class Vehicle {
         return name;
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
     public java.time.ZonedDateTime getCreationDate(){
         return creationDate;
     }
@@ -53,5 +57,14 @@ public class Vehicle {
         return "id: " + id + ", name: " + name + ", coordinates: (" + coordinates.getX() + "; " + coordinates.getY() +
                 "), creation date: " + creationDate + ", engine power: " + enginePower + ", fuel consumption: " +
                 fuelConsumption + ", type: " + type.getType() + "\n";
+    }
+
+    public String toData() {
+        String output = name + " " + coordinates.getX() + " " + coordinates.getY() + " " + enginePower + " " + capacity + " ";
+        if (fuelConsumption != null) {
+            output += fuelConsumption + " ";
+        }
+        output += type.getType();
+        return output;
     }
 }
