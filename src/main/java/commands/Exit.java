@@ -11,6 +11,6 @@ public class Exit implements Command{
 
     @Override
     public String toString() {
-        return "exits program without saving";
+        return "exits program without saving\nsyntax: exit\n";
     }
 }

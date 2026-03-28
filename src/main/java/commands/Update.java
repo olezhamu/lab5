@@ -24,6 +24,6 @@ public class Update implements Command{
 
     @Override
     public String toString() {
-        return "updates value of element by it's id";
+        return "updates value of element by it's id\nsyntax: update (int - id) (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
     }
 }

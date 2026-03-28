@@ -20,6 +20,6 @@ public class RemoveById implements Command{
 
     @Override
     public String toString() {
-        return "removes element from collection by it's id";
+        return "removes element from collection by it's id\nsyntax: remove_by_id (int - id)\n";
     }
 }

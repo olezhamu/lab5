@@ -19,6 +19,6 @@ public class FilterByCapacity implements Command{
 
     @Override
     public String toString() {
-        return "shows all elements which capacity equals entered capacity";
+        return "shows all elements which capacity equals entered capacity\nsyntax: filter_by_capacity (int - capacity)\n";
     }
 }

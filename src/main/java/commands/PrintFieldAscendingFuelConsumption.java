@@ -22,6 +22,6 @@ public class PrintFieldAscendingFuelConsumption implements Command{
 
     @Override
     public String toString() {
-        return "shows values of fuelConsumption field in lower-to-higher order";
+        return "shows values of fuelConsumption field in lower-to-higher order\nsyntax: print_field_ascending_fuel_consumption\n";
     }
 }

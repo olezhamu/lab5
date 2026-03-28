@@ -23,6 +23,6 @@ public class ExecuteScript implements Command{
 
     @Override
     public String toString() {
-        return "executes script from file";
+        return "executes script from file\nsyntax: execute_script (str - file name)\n";
     }
 }

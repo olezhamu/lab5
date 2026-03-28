@@ -22,6 +22,6 @@ public class PrintUniqueEnginePower implements Command{
 
     @Override
     public String toString() {
-        return "shows unique elements of enginePower field";
+        return "shows unique elements of enginePower field\nsyntax: print_unique_engine_power\n";
     }
 }

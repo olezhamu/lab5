@@ -16,6 +16,6 @@ public class Clear implements Command{
 
     @Override
     public String toString() {
-        return "clears collection";
+        return "clears collection\nsyntax: clear\n";
     }
 }
