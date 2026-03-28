@@ -12,19 +12,19 @@ public class CommandContainer {
         commandContainer.put("help", new Help());
         commandContainer.put("info", new Info());
         commandContainer.put("show", new Show());
-        commandContainer.put("add {element}", new Add());
-        commandContainer.put("update id {element}", new Update());
-        commandContainer.put("remove_by_id id", new RemoveById());
+        commandContainer.put("add", new Add());
+        commandContainer.put("update", new Update());
+        commandContainer.put("remove_by_id", new RemoveById());
         commandContainer.put("clear", new Clear());
         commandContainer.put("save", new Save());
-        commandContainer.put("execute_script file_name", new ExecuteScript());
+        commandContainer.put("execute_script", new ExecuteScript());
         commandContainer.put("exit", new Exit());
-        commandContainer.put("add_if_min {element}", new AddIfMin());
-        commandContainer.put("remove_grater {element}", new RemoveGrater());
-        commandContainer.put("remove_lower {element}", new RemoveLower());
-        commandContainer.put("filter_by_capacity capacity", new FilterByCapacity());
+        commandContainer.put("add_if_min", new AddIfMin());
+        commandContainer.put("remove_grater", new RemoveGrater());
+        commandContainer.put("remove_lower", new RemoveLower());
+        commandContainer.put("filter_by_capacity", new FilterByCapacity());
         commandContainer.put("print_unique_engine_power", new PrintUniqueEnginePower());
-        commandContainer.put("print_field_ascending_fuel_consumption ", new PrintFieldAscendingFuelConsumption());
+        commandContainer.put("print_field_ascending_fuel_consumption", new PrintFieldAscendingFuelConsumption());
         return commandContainer;
     }
 
