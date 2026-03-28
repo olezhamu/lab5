@@ -1,11 +1,12 @@
 package main;
 
-import managers.ConsoleManager;
-import utils.CommandContainer;
+import commands.*;
+import managers.*;
+import utils.*;
 import vehicle.*;
-import vehicle.VehicleType;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {

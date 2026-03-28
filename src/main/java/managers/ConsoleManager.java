@@ -1,5 +1,7 @@
 package managers;
 
+import commands.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,6 +25,11 @@ public class ConsoleManager {
             }
             if (input.trim().isEmpty()) {
                 continue;
+            }
+            if (input == "exit") {
+                new Exit().execute(null);
+                stop();
+                break;
             }
             new CommandManager().executeCommand(input);
         }

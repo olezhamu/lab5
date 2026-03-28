@@ -55,7 +55,7 @@ public class Vehicle {
 
     public String getInfo() {
         return "id: " + id + ", name: " + name + ", coordinates: (" + coordinates.getX() + "; " + coordinates.getY() +
-                "), creation date: " + creationDate + ", engine power: " + enginePower + ", fuel consumption: " +
+                "), creation date: " + creationDate + ", engine power: " + enginePower + ", capacity: " + capacity + ", fuel consumption: " +
                 fuelConsumption + ", type: " + type.getType() + "\n";
     }
 

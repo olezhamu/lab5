@@ -48,7 +48,7 @@ public class FileManager {
                 collection.add(vehicle);
             }
         }
-        CollectionContainer.setCollection(collection);
+        new CollectionContainer().setCollection(collection);
     }
 
     public void writeCollection(String fileName) throws IOException {
@@ -57,7 +57,7 @@ public class FileManager {
             Files.createDirectories(path.getParent());
         }
 
-        LinkedList<Vehicle> collection = CollectionContainer.getCollection();
+        LinkedList<Vehicle> collection = new CollectionContainer().getCollection();
         if (collection == null) {
             throw new IllegalStateException("Коллекция не инициализирована");
         }
