@@ -60,9 +60,9 @@ public class Vehicle {
     }
 
     public String toData() {
-        String output = name + " " + coordinates.getX() + " " + coordinates.getY() + " " + enginePower + " " + capacity + " ";
+        String output = name + " " + (int) (double) coordinates.getX() + " " + (int) coordinates.getY() + " " + enginePower + " " + capacity + " ";
         if (fuelConsumption != null) {
-            output += fuelConsumption + " ";
+            output += (int) (double) fuelConsumption + " ";
         }
         output += type.getType();
         return output;

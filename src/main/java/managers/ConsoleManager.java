@@ -8,11 +8,11 @@ import java.io.InputStreamReader;
 
 public class ConsoleManager {
     private final BufferedReader reader;
-    private boolean isRunning;
+    private static boolean isRunning;
 
     public ConsoleManager() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
-        this.isRunning = true;
+        isRunning = true;
     }
 
     public void start() throws IOException {
@@ -26,9 +26,8 @@ public class ConsoleManager {
             if (input.trim().isEmpty()) {
                 continue;
             }
-            if (input == "exit") {
-                new Exit().execute(null);
-                stop();
+            if (input.equals("exit")) {
+                System.out.println("bye! ;p");
                 break;
             }
             new CommandManager().executeCommand(input);
@@ -44,7 +43,7 @@ public class ConsoleManager {
         }
     }
 
-    public void stop() {
+    public static void stop() {
         isRunning = false;
     }
 }

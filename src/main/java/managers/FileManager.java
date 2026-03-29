@@ -48,7 +48,7 @@ public class FileManager {
                 collection.add(vehicle);
             }
         }
-        new CollectionContainer().setCollection(collection);
+        CollectionContainer.setCollection(collection);
     }
 
     public void writeCollection(String fileName) throws IOException {
