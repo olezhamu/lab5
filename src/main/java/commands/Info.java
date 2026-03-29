@@ -9,7 +9,7 @@ public class Info implements Command{
 
     @Override
     public String execute(String argument) {
-        String output = "vehicle, LinkedList";
+        String output = "vehicle, LinkedList, ";
         String cD = new CollectionContainer().getCreationDate() + "";
         output += cD + ", ";
         output += collection.size() + "";

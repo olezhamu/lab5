@@ -14,7 +14,7 @@ public class Help implements Command{
         String output = "";
         HashMap<String, Command> commands = CommandContainer.getCommandContainer();
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
-            output += entry.getKey() + ": " + entry.getValue().toString() + "\n";
+            output += entry.getKey() + ": " + entry.getValue().toString() + "---\n";
         }
         return output;
     }

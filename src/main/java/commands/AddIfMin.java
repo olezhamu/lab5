@@ -19,9 +19,8 @@ public class AddIfMin implements Command {
         collection1.add(vehicle);
         LinkedList<Vehicle> collection2 = new CollectionContainer().sortCollection(collection1);
         if (collection2.indexOf(vehicle) == collection2.size()-1) {
-            collection.add(vehicle);
             output = "element successfully added\n";
-        }
+        } else {collection.remove(vehicle);}
         return output;
     }
 

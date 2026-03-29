@@ -2,11 +2,8 @@
 
 package commands;
 
-import utils.CollectionContainer;
 import vehicle.Vehicle;
 import vehicle.VehicleParser;
-
-import java.util.*;
 
 public class Update implements Command{
     public Update(){}
@@ -16,9 +13,9 @@ public class Update implements Command{
         String[] parts = argument.split("\\s+", 2);
         Integer id = Integer.valueOf(parts[0]);
         Vehicle vehicle = new VehicleParser().parse(parts[1]);
-        for (Vehicle vehicle1 : collection) {
-            if (vehicle1.getId() == id) {
-                collection.set(collection.indexOf(vehicle1), vehicle);
+        for (Vehicle vehicleToCompare : collection) {
+            if (vehicleToCompare.getId() == id) {
+                collection.set(collection.indexOf(vehicleToCompare), vehicle);
             }
         }
         return "element successfully updated\n";

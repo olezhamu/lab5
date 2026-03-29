@@ -14,12 +14,12 @@ public class RemoveLower implements Command{
     @Override
     public String execute(String argument) {
         Vehicle vehicle = new VehicleParser().parse(argument);
-        String output = "there aren't any lower elements";
+        String output = "there aren't any lower elements\n";
         LinkedList<Vehicle> newCollection = new CollectionContainer().sortCollection(collection);
         for (Vehicle vehicleToCompare : collection) {
             if (newCollection.indexOf(vehicle) < newCollection.indexOf(vehicleToCompare)) {
                 newCollection.remove(vehicleToCompare);
-                output = "elements are successfully removed";
+                output = "elements are successfully removed\n";
             }
         }
         return output;

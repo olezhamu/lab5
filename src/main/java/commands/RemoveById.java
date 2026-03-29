@@ -17,7 +17,7 @@ public class RemoveById implements Command{
                 break;
             }
         }
-        return "element successfully removed";
+        return "element successfully removed\n";
     }
 
     @Override

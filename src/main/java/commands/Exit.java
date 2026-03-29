@@ -2,11 +2,14 @@
 
 package commands;
 
+import managers.ConsoleManager;
+
 public class Exit implements Command{
     public Exit(){}
 
     @Override
     public String execute(String argument) {
+        ConsoleManager.stop();
         return "bye! ;p";
     }
 
