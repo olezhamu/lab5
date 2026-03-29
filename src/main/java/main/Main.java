@@ -11,6 +11,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         ConsoleManager consoleManager = new ConsoleManager();
+        new FileManager().readCollection("collection");
         consoleManager.start();
     }
 }
