@@ -1,7 +1,7 @@
 package Utils;
 
-import Commands.*;
-import Vehicle.*;
+import commands.*;
+import vehicle.*;
 
 import java.util.HashMap;
 
