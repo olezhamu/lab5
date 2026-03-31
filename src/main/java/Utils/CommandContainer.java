@@ -18,7 +18,7 @@ public class CommandContainer {
         commandContainer.put("remove_by_id", new RemoveById());
         commandContainer.put("clear", new Clear());
         commandContainer.put("save", new Save());
-        commandContainer.put("execute_script file_name", new ExecuteScript(null));
+        commandContainer.put("execute_script", new ExecuteScript());
         commandContainer.put("exit", new Exit());
         commandContainer.put("add_if_min {element}", new AddIfMin(vehicle));
         commandContainer.put("remove_grater {element}", new RemoveGrater(vehicle));
