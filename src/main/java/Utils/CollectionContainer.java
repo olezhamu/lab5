@@ -6,6 +6,8 @@ import java.util.*;
 
 public class CollectionContainer {
     private static LinkedList<Vehicle> collection = new LinkedList<>();
+    private final java.time.ZonedDateTime creationDate = ZonedDateTime.now();
+
     public CollectionContainer() {}
 
     public LinkedList<Vehicle> sortCollection(LinkedList<Vehicle> newCollection){
