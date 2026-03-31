@@ -9,7 +9,7 @@ public class CommandContainer {
     private static HashMap<String, Command> commandContainer = new HashMap<String, Command>();
     private Vehicle vehicle = new Vehicle("vehicle", 1, 1, 1, 1, 1, VehicleType.HELICOPTER);
 
-    public CommandContainer(){
+    public static HashMap<String, Command> getCommandContainer() {
         commandContainer.put("help", new Help());
         commandContainer.put("info", new Info());
         commandContainer.put("show", new Show());
