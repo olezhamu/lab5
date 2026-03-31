@@ -28,4 +28,8 @@ public class CommandContainer {
         commandContainer.put("print_field_ascending_fuel_consumption", new PrintFieldAscendingFuelConsumption());
         return commandContainer;
     }
+
+    public void addCommand(String name, Command command) {
+        commandContainer.put(name, command);
+    }
 }
