@@ -1,6 +1,6 @@
 package utils;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
 import java.util.*;
 
