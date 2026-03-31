@@ -17,7 +17,7 @@ public class CollectionContainer {
         return newCollection;
     }
 
-    public void setCollection(LinkedList<Vehicle> collection) {
+    public static void setCollection(LinkedList<Vehicle> collection) {
         CollectionContainer.collection = collection;
     }
 
