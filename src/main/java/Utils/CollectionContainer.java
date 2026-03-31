@@ -22,6 +22,10 @@ public class CollectionContainer {
     }
 
     public LinkedList<Vehicle> getCollection() {
-        return CollectionContainer.collection;
+        return collection;
+    }
+
+    public java.time.ZonedDateTime getCreationDate() {
+        return creationDate;
     }
 }
