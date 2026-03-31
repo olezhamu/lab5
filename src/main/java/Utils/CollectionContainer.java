@@ -9,11 +9,11 @@ public class CollectionContainer {
     public CollectionContainer() {}
 
     public LinkedList<Vehicle> sortCollection(LinkedList<Vehicle> newCollection){
-        newCollection.sort(Comparator.comparing(Vehicle::getCreationDate));
-        newCollection.sort(Comparator.comparing(Vehicle::getCapacity));
-        newCollection.sort(Comparator.comparing(Vehicle::getEnginePower));
-        newCollection.sort(Comparator.comparing(Vehicle::getName));
-        newCollection.sort(Comparator.comparing(Vehicle::getType));
+        newCollection.sort(Comparator.comparing(Vehicle::getCreationDate)
+                .thenComparing(Vehicle::getCapacity)
+                .thenComparing(Vehicle::getEnginePower)
+                .thenComparing(Vehicle::getName)
+                .thenComparing(Vehicle::getType));
         return newCollection;
     }
 
