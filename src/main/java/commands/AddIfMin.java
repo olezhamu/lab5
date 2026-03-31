@@ -4,7 +4,7 @@ package commands;
 
 import utils.CollectionContainer;
 import vehicle.Vehicle;
-import vehicle.VehicleParser;
+import vehicle.VehicleInputReader;
 
 import java.util.LinkedList;
 
@@ -13,7 +13,7 @@ public class AddIfMin implements Command {
 
     @Override
     public String execute(String argument) {
-        Vehicle vehicle = new VehicleParser().parse(argument);
+        Vehicle vehicle = new VehicleInputReader().readVehicle();
         String output = "this vehicle can't be added\n";
         LinkedList<Vehicle> collection1 = new CollectionContainer().getCollection();
         collection1.add(vehicle);

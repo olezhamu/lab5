@@ -1,71 +1,67 @@
 package managers;
 
-import utils.CollectionContainer;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import vehicle.Vehicle;
-import vehicle.VehicleParser;
+import utils.CollectionContainer;
+import vehicle.VehicleDeserializer;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class FileManager {
-    private final VehicleParser vehicleParser;
+    private final ObjectMapper objectMapper;
 
     public FileManager() {
-        this.vehicleParser = new VehicleParser();
+        this.objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.registerModule(new SimpleModule().addDeserializer(Vehicle.class, new VehicleDeserializer()));
     }
 
     public List<String> readCommands(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        if (!Files.exists(path)) {
-            throw new IOException("Файл не найден: " + fileName);
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileName));
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            return bufferedReader.lines()
+                    .map(String::trim)
+                    .filter(line -> !line.isEmpty())
+                    .collect(Collectors.toList());
         }
-        return Files.lines(path).map(String::trim).filter(line -> !line.isEmpty()).collect(Collectors.toList());
     }
 
     public void readCollection(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        if (!Files.exists(path)) {
-            throw new IOException("Файл не найден: " + fileName);
+        File file = new File(fileName);
+        if (!file.exists()) {
+            CollectionContainer.setCollection(new LinkedList<>());
+            return;
         }
 
-        LinkedList<Vehicle> collection = new LinkedList<>();
-
-        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(path.toFile()));
-             BufferedReader bufferedReader = new BufferedReader(reader)) {
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                line = line.trim();
-                if (line.isEmpty()) {
-                    continue;
-                }
-                Vehicle vehicle = vehicleParser.parse(line);
-                collection.add(vehicle);
-            }
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file))) {
+            ArrayList<Vehicle> collection = objectMapper.readValue(reader, new TypeReference<ArrayList<Vehicle>>() {});
+            CollectionContainer.setCollection(new LinkedList<>(collection));
+        } catch (Exception e) {
+            throw new IOException("error reading JSON: " + e.getMessage(), e);
         }
-        CollectionContainer.setCollection(collection);
     }
 
     public void writeCollection(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        if (path.getParent() != null && !Files.exists(path.getParent())) {
-            Files.createDirectories(path.getParent());
+        Collection<Vehicle> collection = new CollectionContainer().getCollection();
+        File file = new File(fileName);
+        if (file.getParentFile() != null && !file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
         }
 
-        LinkedList<Vehicle> collection = new CollectionContainer().getCollection();
-        if (collection == null) {
-            throw new IllegalStateException("Коллекция не инициализирована");
-        }
-
-        try (PrintWriter writer = new PrintWriter(new FileOutputStream(path.toFile()))) {
-            for (Vehicle vehicle : collection) {
-                writer.println(vehicle.toData());
-            }
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+            objectMapper.writeValue(writer, collection);
+        } catch (Exception e) {
+            throw new IOException("error writing JSON: " + e.getMessage(), e);
         }
     }
 }

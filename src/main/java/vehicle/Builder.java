@@ -11,7 +11,7 @@ public class Builder {
     protected long capacity; //Значение поля должно быть больше 0
     protected Double fuelConsumption = null; //Поле может быть null, Значение поля должно быть больше 0
     protected VehicleType type; //Поле не может быть null
-    private static Integer count = 0;
+    private static Integer count = 1;
 
     public Builder(String name, Double x, double y, long enginePower, long capacity, VehicleType type) {
         this.id = count++;
@@ -21,6 +21,16 @@ public class Builder {
         this.enginePower = enginePower;
         this.capacity = capacity;
         this.type = type;
+    }
+
+    public Builder id(Integer id){
+        this.id = id;
+        return this;
+    }
+
+    public Builder creationDate(java.time.ZonedDateTime creationDate){
+        this.creationDate = creationDate;
+        return this;
     }
 
     public Builder fuelConsumption(Double fuelConsumption) {

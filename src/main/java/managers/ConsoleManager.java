@@ -17,7 +17,7 @@ public class ConsoleManager {
 
     public void start() throws IOException {
         while (isRunning) {
-            System.out.print("> ");
+            print("> ");
             String input = readLine();
             if (input == null) {
                 // Достигнут конец ввода (Ctrl+D / Ctrl+Z)
@@ -27,7 +27,7 @@ public class ConsoleManager {
                 continue;
             }
             if (input.equals("exit")) {
-                System.out.println("bye! ;p");
+                println("bye! ;p");
                 break;
             }
             new CommandManager().executeCommand(input);
@@ -38,9 +38,17 @@ public class ConsoleManager {
         try {
             return reader.readLine();
         } catch (IOException e) {
-            System.err.println("Ошибка чтения ввода: " + e.getMessage());
+            System.err.println("error reading data: " + e.getMessage());
             return null;
         }
+    }
+
+    public void println(String output) {
+        System.out.println(output);
+    }
+
+    public void print(String output) {
+        System.out.print(output);
     }
 
     public static void stop() {

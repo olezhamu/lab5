@@ -4,7 +4,6 @@ import commands.Command;
 import utils.CommandContainer;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CommandManager {
@@ -17,10 +16,10 @@ public class CommandManager {
 
         Command command = commandContainer.get(commandName);
         if (command == null) {
-            System.err.println("Неизвестная команда: " + commandName);
-            System.out.println("Введите 'help' для списка доступных команд.");
+            System.err.println("unknown command: " + commandName);
+            new ConsoleManager().println("input 'help' for list of available commands");
             return;
         }
-        System.out.println(command.execute(argument));
+        new ConsoleManager().println(command.execute(argument));
     }
 }
