@@ -25,10 +25,7 @@ public class CommandContainer {
         commandContainer.put("remove_lower", new RemoveLower());
         commandContainer.put("filter_by_capacity", new FilterByCapacity());
         commandContainer.put("print_unique_engine_power", new PrintUniqueEnginePower());
-        commandContainer.put("print_field_ascending_fuel_consumption ", new PrintFieldAscendingFuelConsumption());
-    }
-
-    public static HashMap<String, Command> getCommandContainer() {
+        commandContainer.put("print_field_ascending_fuel_consumption", new PrintFieldAscendingFuelConsumption());
         return commandContainer;
     }
 }
