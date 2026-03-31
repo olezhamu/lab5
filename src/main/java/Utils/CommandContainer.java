@@ -13,9 +13,9 @@ public class CommandContainer {
         commandContainer.put("help", new Help());
         commandContainer.put("info", new Info());
         commandContainer.put("show", new Show());
-        commandContainer.put("add {element}", new Add(vehicle));
-        commandContainer.put("update id {element}", new Update(vehicle.getId(), vehicle));
-        commandContainer.put("remove_by_id id", new RemoveById(vehicle.getId()));
+        commandContainer.put("add", new Add());
+        commandContainer.put("update", new Update());
+        commandContainer.put("remove_by_id", new RemoveById());
         commandContainer.put("clear", new Clear());
         commandContainer.put("save", new Save());
         commandContainer.put("execute_script file_name", new ExecuteScript(null));
