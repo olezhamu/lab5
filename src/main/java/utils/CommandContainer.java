@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class CommandContainer {
     private static HashMap<String, Command> commandContainer = new HashMap<String, Command>();
+    private Vehicle vehicle = new Builder("vehicle", 1.0, 1, 1, 1, VehicleType.HELICOPTER).build();
 
     public static HashMap<String, Command> getCommandContainer() {
         commandContainer.put("help", new Help());
