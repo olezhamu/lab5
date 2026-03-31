@@ -20,10 +20,10 @@ public class CommandContainer {
         commandContainer.put("save", new Save());
         commandContainer.put("execute_script", new ExecuteScript());
         commandContainer.put("exit", new Exit());
-        commandContainer.put("add_if_min {element}", new AddIfMin(vehicle));
-        commandContainer.put("remove_grater {element}", new RemoveGrater(vehicle));
-        commandContainer.put("remove_lower {element}", new RemoveLower(vehicle));
-        commandContainer.put("filter_by_capacity capacity", new FilterByCapacity(vehicle.getCapacity()));
+        commandContainer.put("add_if_min", new AddIfMin());
+        commandContainer.put("remove_grater", new RemoveGrater());
+        commandContainer.put("remove_lower", new RemoveLower());
+        commandContainer.put("filter_by_capacity", new FilterByCapacity());
         commandContainer.put("print_unique_engine_power", new PrintUniqueEnginePower());
         commandContainer.put("print_field_ascending_fuel_consumption ", new PrintFieldAscendingFuelConsumption());
     }
