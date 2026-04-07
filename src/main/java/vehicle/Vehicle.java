@@ -63,13 +63,4 @@ public class Vehicle {
                 "), creation date: " + creationDate + ", engine power: " + enginePower + ", capacity: " + capacity + ", fuel consumption: " +
                 fuelConsumption + ", type: " + type.getType() + "\n";
     }
-
-    public String toData() {
-        String output = name + " " + (int) (double) coordinates.getX() + " " + (int) coordinates.getY() + " " + enginePower + " " + capacity + " ";
-        if (fuelConsumption != null) {
-            output += (int) (double) fuelConsumption + " ";
-        }
-        output += type.getType();
-        return output;
-    }
 }

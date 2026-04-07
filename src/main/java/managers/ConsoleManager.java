@@ -20,7 +20,6 @@ public class ConsoleManager {
             print("> ");
             String input = readLine();
             if (input == null) {
-                // Достигнут конец ввода (Ctrl+D / Ctrl+Z)
                 break;
             }
             if (input.trim().isEmpty()) {
