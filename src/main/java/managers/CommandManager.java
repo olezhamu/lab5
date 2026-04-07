@@ -16,7 +16,7 @@ public class CommandManager {
 
         Command command = commandContainer.get(commandName);
         if (command == null) {
-            System.err.println("unknown command: " + commandName);
+            new ConsoleManager().println("unknown command: " + commandName);
             new ConsoleManager().println("input 'help' for list of available commands");
             return;
         }

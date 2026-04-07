@@ -7,6 +7,8 @@ import managers.CommandManager;
 import managers.FileManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ExecuteScript implements Command{
@@ -15,7 +17,35 @@ public class ExecuteScript implements Command{
     @Override
     public String execute(String argument) throws IOException {
         String fileName = argument;
-        List<String> commandsToRun = new FileManager().readCommands(fileName);
+        List<String> linesFromFile = new FileManager().readCommands(fileName);
+        List<String> commandsToRun = new ArrayList<>();
+        StringBuilder current = new StringBuilder();
+
+        for (String line : linesFromFile) {
+            String trimmed = line.trim();
+            if (trimmed.equals("add") || trimmed.equals("add_if_min") || trimmed.equals("removeGrater") || trimmed.equals("removeLower") || trimmed.contains("update")) {
+                if (current.length() > 0) {
+                    commandsToRun.add(current.toString().trim());
+                    current.setLength(0);
+                }
+                current.append(trimmed);
+            } else if (trimmed.contains("clear") || trimmed.contains("execute_script") ||
+                    trimmed.contains("exit") || trimmed.contains("filter_by_capacity") ||
+                    trimmed.contains("help") || trimmed.contains("info") ||
+                    trimmed.contains("print_field_ascending_fuel_consumption") ||
+                    trimmed.contains("print_unique_engine_power") ||trimmed.contains("remove_by_id") ||
+                    trimmed.contains("save") || trimmed.contains("show")){
+                if (current.length() > 0) {
+                    commandsToRun.add(current.toString().trim());
+                    current.setLength(0);
+                }
+                commandsToRun.add(trimmed);
+            }else {
+                current.append(" ").append(trimmed);
+            }
+        }
+        if (current.length() > 0) commandsToRun.add(current.toString().trim());
+
         for (String commandToRun : commandsToRun) {
             new CommandManager().executeCommand(commandToRun);
         }

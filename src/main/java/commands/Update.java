@@ -4,6 +4,7 @@ package commands;
 
 import vehicle.Vehicle;
 import vehicle.VehicleInputReader;
+import vehicle.VehicleParser;
 
 public class Update implements Command{
     public Update(){}
@@ -12,14 +13,19 @@ public class Update implements Command{
     public String execute(String argument) {
         String[] parts = argument.split("\\s+", 2);
         Integer id = Integer.valueOf(parts[0]);
-        Vehicle vehicle = new VehicleInputReader().readVehicle();
+        Vehicle vehicle;
+        if (parts[1] == null){
+            vehicle = new VehicleInputReader().readVehicle();
+        } else {
+            vehicle = VehicleParser.parse(parts[1]);
+        }
         vehicle.setId(id);
         for (Vehicle vehicleToCompare : collection) {
             if (vehicleToCompare.getId() == id) {
                 collection.set(collection.indexOf(vehicleToCompare), vehicle);
             }
         }
-        return "element successfully updated\n";
+        return "element successfully updated or element with entered id doesn't exist\n";
     }
 
     @Override

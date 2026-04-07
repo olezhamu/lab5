@@ -5,6 +5,7 @@ package commands;
 import utils.CollectionContainer;
 import vehicle.Vehicle;
 import vehicle.VehicleInputReader;
+import vehicle.VehicleParser;
 
 import java.util.LinkedList;
 
@@ -13,7 +14,12 @@ public class RemoveLower implements Command{
 
     @Override
     public String execute(String argument) {
-        Vehicle vehicle = new VehicleInputReader().readVehicle();
+        Vehicle vehicle;
+        if (argument == null){
+            vehicle = new VehicleInputReader().readVehicle();
+        } else {
+            vehicle = VehicleParser.parse(argument);
+        }
         String output = "there aren't any lower elements\n";
         LinkedList<Vehicle> newCollection = new CollectionContainer().sortCollection(collection);
         for (Vehicle vehicleToCompare : collection) {

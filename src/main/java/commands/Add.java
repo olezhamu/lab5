@@ -3,13 +3,18 @@
 package commands;
 
 import vehicle.VehicleInputReader;
+import vehicle.VehicleParser;
 
 public class Add implements Command {
     public Add(){}
 
     @Override
     public String execute(String argument) {
-        collection.add(new VehicleInputReader().readVehicle());
+        if (argument == null){
+            collection.add(new VehicleInputReader().readVehicle());
+        } else {
+            collection.add(VehicleParser.parse(argument));
+        }
         return "element successfully added\n";
     }
 
