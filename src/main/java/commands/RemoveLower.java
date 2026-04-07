@@ -33,6 +33,6 @@ public class RemoveLower implements Command{
 
     @Override
     public String toString() {
-        return "removes all elements from collection if they are lower then entered element\nsyntax: remove_lower (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
+        return "removes all elements from collection if they are lower then entered element\n";
     }
 }

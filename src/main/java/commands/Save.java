@@ -18,6 +18,6 @@ public class Save implements Command{
 
     @Override
     public String toString() {
-        return "saves collection to file\nsyntax: save (str - file name)\n";
+        return "saves collection to file\n";
     }
 }

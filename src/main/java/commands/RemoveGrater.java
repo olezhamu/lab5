@@ -33,6 +33,6 @@ public class RemoveGrater implements Command{
 
     @Override
     public String toString() {
-        return "removes all elements from collection if they are higher then entered element\nsyntax: remove_grater (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
+        return "removes all elements from collection if they are higher then entered element\n";
     }
 }

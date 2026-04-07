@@ -11,25 +11,29 @@ public class Update implements Command{
 
     @Override
     public String execute(String argument) {
-        String[] parts = argument.split("\\s+", 2);
-        Integer id = Integer.valueOf(parts[0]);
-        Vehicle vehicle;
-        if (parts[1] == null){
-            vehicle = new VehicleInputReader().readVehicle();
-        } else {
-            vehicle = VehicleParser.parse(parts[1]);
-        }
-        vehicle.setId(id);
-        for (Vehicle vehicleToCompare : collection) {
-            if (vehicleToCompare.getId() == id) {
-                collection.set(collection.indexOf(vehicleToCompare), vehicle);
+        try {
+            String[] parts = argument.split("\\s+", 2);
+            Integer id = Integer.valueOf(parts[0]);
+            Vehicle vehicle;
+            if (parts.length == 1) {
+                vehicle = new VehicleInputReader().readVehicle();
+            } else {
+                vehicle = VehicleParser.parse(parts[1]);
             }
+            vehicle.setId(id);
+            for (Vehicle vehicleToCompare : collection) {
+                if (vehicleToCompare.getId() == id) {
+                    collection.set(collection.indexOf(vehicleToCompare), vehicle);
+                }
+            }
+            return "element successfully updated or element with entered id doesn't exist\n";
+        } catch (NumberFormatException e) {
+            return "wrong format of id. must be Integer";
         }
-        return "element successfully updated or element with entered id doesn't exist\n";
     }
 
     @Override
     public String toString() {
-        return "updates value of element by it's id\nsyntax: update (int - id) (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
+        return "updates value of element by it's id\n";
     }
 }

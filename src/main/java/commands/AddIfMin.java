@@ -32,6 +32,6 @@ public class AddIfMin implements Command {
 
     @Override
     public String toString() {
-        return "adds element to collection if it's value lower then value of minimal element of collection\nsyntax: add_if_min (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
+        return "adds element to collection if it's value lower then value of minimal element of collection\n";
     }
 }

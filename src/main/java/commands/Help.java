@@ -21,6 +21,6 @@ public class Help implements Command{
 
     @Override
     public String toString() {
-        return "shows information about all available commands\nsyntax: help\n";
+        return "shows information about all available commands\n";
     }
 }

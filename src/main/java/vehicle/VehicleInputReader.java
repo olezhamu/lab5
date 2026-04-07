@@ -141,14 +141,13 @@ public class VehicleInputReader {
     }
 
     private VehicleType readVehicleType() {
-        String types = "available types: ";
+        String types = "";
         for (VehicleType type : VehicleType.values()) {
-            types += type.getType() + " ";
+            types += type.getType() + "/";
         }
-            console.println(types);
 
             while (true) {
-                console.print("write type from list: ");
+                console.print("write type from list (" + types + "): ");
                 String input = console.readLine();
                 if (input == null) continue;
                 input = input.trim();

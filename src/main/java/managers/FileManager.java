@@ -47,7 +47,7 @@ public class FileManager {
             ArrayList<Vehicle> collection = objectMapper.readValue(reader, new TypeReference<ArrayList<Vehicle>>() {});
             CollectionContainer.setCollection(new LinkedList<>(collection));
         } catch (Exception e) {
-            throw new IOException("error reading JSON: " + e.getMessage(), e);
+            new ConsoleManager().println("error reading JSON: " + e.getMessage());
         }
     }
 
@@ -61,7 +61,7 @@ public class FileManager {
         try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
             objectMapper.writeValue(writer, collection);
         } catch (Exception e) {
-            throw new IOException("error writing JSON: " + e.getMessage(), e);
+            new ConsoleManager().println("error writing JSON: " + e.getMessage());
         }
     }
 }

@@ -18,6 +18,6 @@ public class Info implements Command{
 
     @Override
     public String toString() {
-        return "shows information about collection\nsyntax: info\n";
+        return "shows information about collection\n";
     }
 }

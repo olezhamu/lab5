@@ -9,18 +9,22 @@ public class FilterByCapacity implements Command{
 
     @Override
     public String execute(String argument) {
-        long capacity = Long.parseLong(argument);
-        String output = "this elements have capacity that equal to entered:\n";
-        for (Vehicle vehicle : collection) {
-            if (vehicle.getCapacity() == capacity) {
-                output += vehicle.getName() + "\n";
+        try {
+            long capacity = Long.parseLong(argument);
+            String output = "this elements have capacity that equal to entered:\n";
+            for (Vehicle vehicle : collection) {
+                if (vehicle.getCapacity() == capacity) {
+                    output += vehicle.getName() + "\n";
+                }
             }
+            return output;
+        } catch (NumberFormatException e) {
+            return "wrong format of capacity. must be long";
         }
-        return output;
     }
 
     @Override
     public String toString() {
-        return "shows all elements which capacity equals entered capacity\nsyntax: filter_by_capacity (int - capacity)\n";
+        return "shows all elements which capacity equals entered capacity\n";
     }
 }
