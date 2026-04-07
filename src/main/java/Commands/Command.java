@@ -1,13 +1,12 @@
-package commands;
+package Commands;
 
 import utils.CollectionContainer;
-import vehicle.Vehicle;
+import Vehicle.Vehicle;
 
-import java.io.IOException;
 import java.util.*;
 
 public interface Command {
     LinkedList<Vehicle> collection = new CollectionContainer().getCollection();
-    String execute(String argument) throws IOException;
+    String execute();
     String toString();
 }

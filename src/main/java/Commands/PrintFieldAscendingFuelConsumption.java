@@ -1,16 +1,17 @@
 //вывести значения поля fuelConsumption всех элементов в порядке возрастания
 
-package commands;
+package Commands;
 
-import vehicle.Vehicle;
+import Vehicle.Vehicle;
 
 import java.util.*;
 import java.util.Comparator;
 
 public class PrintFieldAscendingFuelConsumption implements Command{
     public PrintFieldAscendingFuelConsumption(){}
+
     @Override
-    public String execute(String argument) {
+    public String execute() {
         List<Double> fuelConsumptions = new ArrayList<Double>(0);
         String output = "";
         for (Vehicle vehicle : collection) {
@@ -23,6 +24,6 @@ public class PrintFieldAscendingFuelConsumption implements Command{
 
     @Override
     public String toString() {
-        return "shows values of fuelConsumption field in lower-to-higher order\nsyntax: print_field_ascending_fuel_consumption\n";
+        return "shows values of fuelConsumption field in lower-to-higher order";
     }
 }

@@ -1,23 +1,21 @@
 //вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)
 
-package commands;
-
-import utils.CollectionContainer;
+package Commands;
 
 public class Info implements Command{
     public Info(){}
 
     @Override
-    public String execute(String argument) {
-        String output = "vehicle, LinkedList, ";
-        String cD = new CollectionContainer().getCreationDate() + "";
-        output += cD + ", ";
+    public String execute() {
+        String output = "vehicle, ";
+        System.out.println("hashmap");
+        //output += (string) collection.getCreationDate() + ", ";
         output += collection.size() + "";
         return output + "\n";
     }
 
     @Override
     public String toString() {
-        return "shows information about collection\nsyntax: info\n";
+        return "shows information about collection";
     }
 }

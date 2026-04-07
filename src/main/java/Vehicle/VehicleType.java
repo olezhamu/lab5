@@ -1,4 +1,4 @@
-package vehicle;
+package Vehicle;
 
 public enum VehicleType {
     HELICOPTER("helicopter"),

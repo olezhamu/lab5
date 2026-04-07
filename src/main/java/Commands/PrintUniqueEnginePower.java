@@ -1,8 +1,8 @@
 //вывести уникальные значения поля enginePower всех элементов в коллекции
 
-package commands;
+package Commands;
 
-import vehicle.Vehicle;
+import Vehicle.Vehicle;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class PrintUniqueEnginePower implements Command{
     public PrintUniqueEnginePower(){}
 
     @Override
-    public String execute(String argument) {
+    public String execute() {
         List<Long> enginePowers = new ArrayList<Long>(0);
         String output = "";
         for (Vehicle vehicle : collection) {enginePowers.add(vehicle.getEnginePower());}
@@ -24,6 +24,6 @@ public class PrintUniqueEnginePower implements Command{
 
     @Override
     public String toString() {
-        return "shows unique elements of enginePower field\nsyntax: print_unique_engine_power\n";
+        return "shows unique elements of enginePower field";
     }
 }
