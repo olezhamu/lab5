@@ -1,15 +1,19 @@
 package vehicle;
 
+import managers.ConsoleManager;
+
 public class VehicleParser {
     public static Vehicle parse(String line) {
         String[] parts = line.split(" ");
         if ((parts.length < 6) || (parts.length > 7)) {
-            throw new IllegalArgumentException("wrong number of fields, expected: name x y enginePower capacity (optional) fuelConsumption vehicleType" + parts.length);
+            new ConsoleManager().println("wrong number of fields, expected: name x y enginePower capacity (optional) fuelConsumption vehicleType");
+            return null;
         }
 
         String name = parts[0].trim();
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("name can't be empty");
+            new ConsoleManager().println("name can't be empty");
+            return null;
         }
 
         Double x = Double.parseDouble(parts[1]);
@@ -17,18 +21,24 @@ public class VehicleParser {
 
         long enginePower = Long.parseLong(parts[3]);
         if (enginePower <= 0) {
-            throw new IllegalArgumentException("engine power must be grater then 0");
+            new ConsoleManager().println("engine power must be grater then 0");
+            return null;
         }
 
         long capacity = Long.parseLong(parts[4]);
         if (capacity <= 0) {
-            throw new IllegalArgumentException("engine power must be grater then 0");
+            new ConsoleManager().println("engine power must be grater then 0");
+            return null;
         }
 
         Double fuelConsumption = null;
         int partsToken = 5;
         if (parts.length == 7) {
             fuelConsumption = Double.parseDouble(parts[partsToken]);
+            if (fuelConsumption <= 0) {
+                new ConsoleManager().println("fuel consumption must be grater then 0");
+                return null;
+            }
             partsToken ++;
         }
 
@@ -36,7 +46,8 @@ public class VehicleParser {
         try {
             vehicleType = VehicleType.valueOf(parts[partsToken].trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("unknown type, available types: " + java.util.Arrays.toString(VehicleType.values()));
+            new ConsoleManager().println("unknown type, available types: " + java.util.Arrays.toString(VehicleType.values()));
+            return null;
         }
 
         return new Builder(name, x, y, enginePower, capacity, vehicleType).fuelConsumption(fuelConsumption).build();
