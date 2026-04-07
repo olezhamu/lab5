@@ -1,6 +1,6 @@
 //вывести справку по доступным командам
 
-package commands;
+package Commands;
 
 import utils.CommandContainer;
 
@@ -10,17 +10,17 @@ public class Help implements Command{
     public Help(){}
 
     @Override
-    public String execute(String argument) {
+    public String execute() {
         String output = "";
         HashMap<String, Command> commands = CommandContainer.getCommandContainer();
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
-            output += entry.getKey() + ": " + entry.getValue().toString() + "---\n";
+            output += entry.getKey() + " : " + entry.getValue().toString() + "\n";
         }
         return output;
     }
 
     @Override
     public String toString() {
-        return "shows information about all available commands\nsyntax: help\n";
+        return "shows information about all available commands";
     }
 }

@@ -1,25 +1,27 @@
 //удалить из коллекции все элементы, меньшие, чем заданный
 
-package commands;
+package Commands;
 
 import utils.CollectionContainer;
-import vehicle.Vehicle;
-import vehicle.VehicleInputReader;
+import Vehicle.Vehicle;
 
 import java.util.LinkedList;
 
 public class RemoveLower implements Command{
-    public RemoveLower(){}
+    public Vehicle vehicle;
+
+    public RemoveLower(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 
     @Override
-    public String execute(String argument) {
-        Vehicle vehicle = new VehicleInputReader().readVehicle();
-        String output = "there aren't any lower elements\n";
+    public String execute() {
+        String output = "there aren't any lower elements";
         LinkedList<Vehicle> newCollection = new CollectionContainer().sortCollection(collection);
         for (Vehicle vehicleToCompare : collection) {
             if (newCollection.indexOf(vehicle) < newCollection.indexOf(vehicleToCompare)) {
                 newCollection.remove(vehicleToCompare);
-                output = "elements are successfully removed\n";
+                output = "elements are successfully removed";
             }
         }
         return output;
@@ -27,6 +29,6 @@ public class RemoveLower implements Command{
 
     @Override
     public String toString() {
-        return "removes all elements from collection if they are lower then entered element\nsyntax: remove_lower (str - name) (int - x coord) (int - y coord) (int - engine power) (int - capacity) (optional: int - fuel consumption) (str - vehicle type)\n";
+        return "removes all elements from collection if they are lower then entered element";
     }
 }

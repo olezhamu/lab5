@@ -1,20 +1,17 @@
 //завершить программу (без сохранения в файл)
 
-package commands;
-
-import managers.ConsoleManager;
+package Commands;
 
 public class Exit implements Command{
     public Exit(){}
 
     @Override
-    public String execute(String argument) {
-        ConsoleManager.stop();
-        return "bye! ;p";
+    public String execute() {
+        return "";
     }
 
     @Override
     public String toString() {
-        return "exits program without saving\nsyntax: exit\n";
+        return "exits program without saving";
     }
 }
