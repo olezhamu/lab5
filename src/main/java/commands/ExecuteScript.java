@@ -7,16 +7,20 @@ import managers.CommandManager;
 import managers.FileManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ExecuteScript implements Command{
-    public ExecuteScript(){}
+    private static final Set<String> executingFiles = new HashSet<>();
 
     @Override
     public String execute(String argument) throws IOException {
-        String fileName = argument;
+        String fileName = argument.trim();
+
+        if (executingFiles.contains(fileName)) {
+            throw new IOException("recursion: file '" + fileName + "' already have been executed");
+        }
+        executingFiles.add(fileName);
+
         List<String> linesFromFile = new FileManager().readCommands(fileName);
         List<String> commandsToRun = new ArrayList<>();
         StringBuilder current = new StringBuilder();
