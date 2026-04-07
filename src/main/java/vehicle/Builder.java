@@ -1,4 +1,4 @@
-package Vehicle;
+package vehicle;
 
 import java.time.ZonedDateTime;
 
@@ -11,9 +11,9 @@ public class Builder {
     protected long capacity; //Значение поля должно быть больше 0
     protected Double fuelConsumption = null; //Поле может быть null, Значение поля должно быть больше 0
     protected VehicleType type; //Поле не может быть null
-    private static Integer count = 0;
+    private static Integer count = 1;
 
-    public Builder(String name, Double x, Double y, long enginePower, long capacity, VehicleType type) {
+    public Builder(String name, Double x, double y, long enginePower, long capacity, VehicleType type) {
         this.id = count++;
         this.name = name;
         this.coordinates = new Coordinates(x, y);
@@ -23,9 +23,19 @@ public class Builder {
         this.type = type;
     }
 
-    public Double fuelConsumption(Double fuelConsumption) {
+    public Builder id(Integer id){
+        this.id = id;
+        return this;
+    }
+
+    public Builder creationDate(java.time.ZonedDateTime creationDate){
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    public Builder fuelConsumption(Double fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
-        return fuelConsumption;
+        return this;
     }
 
     public Vehicle build() {

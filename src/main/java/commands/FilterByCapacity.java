@@ -1,18 +1,15 @@
 //вывести элементы, значение поля capacity которых равно заданному
 
-package Commands;
+package commands;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
 public class FilterByCapacity implements Command{
-    private long capacity;
-
-    public FilterByCapacity(long capacity) {
-        this.capacity = capacity;
-    }
+    public FilterByCapacity(){}
 
     @Override
-    public String execute() {
+    public String execute(String argument) {
+        long capacity = Long.parseLong(argument);
         String output = "this elements have capacity that equal to entered:\n";
         for (Vehicle vehicle : collection) {
             if (vehicle.getCapacity() == capacity) {
@@ -24,6 +21,6 @@ public class FilterByCapacity implements Command{
 
     @Override
     public String toString() {
-        return "shows all elements which capacity equals entered capacity";
+        return "shows all elements which capacity equals entered capacity\nsyntax: filter_by_capacity (int - capacity)\n";
     }
 }

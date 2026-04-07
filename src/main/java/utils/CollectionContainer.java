@@ -1,27 +1,34 @@
 package utils;
 
-import Vehicle.Vehicle;
+import vehicle.Vehicle;
 
+import java.time.*;
 import java.util.*;
 
 public class CollectionContainer {
     private static LinkedList<Vehicle> collection = new LinkedList<>();
+    private final java.time.ZonedDateTime creationDate = ZonedDateTime.now();
+
     public CollectionContainer() {}
 
     public LinkedList<Vehicle> sortCollection(LinkedList<Vehicle> newCollection){
-        newCollection.sort(Comparator.comparing(Vehicle::getCreationDate));
-        newCollection.sort(Comparator.comparing(Vehicle::getCapacity));
-        newCollection.sort(Comparator.comparing(Vehicle::getEnginePower));
-        newCollection.sort(Comparator.comparing(Vehicle::getName));
-        newCollection.sort(Comparator.comparing(Vehicle::getType));
+        newCollection.sort(Comparator.comparing(Vehicle::getCreationDate)
+                .thenComparing(Vehicle::getCapacity)
+                .thenComparing(Vehicle::getEnginePower)
+                .thenComparing(Vehicle::getName)
+                .thenComparing(Vehicle::getType));
         return newCollection;
     }
 
-    public void setCollection(LinkedList<Vehicle> collection) {
+    public static void setCollection(LinkedList<Vehicle> collection) {
         CollectionContainer.collection = collection;
     }
 
     public LinkedList<Vehicle> getCollection() {
-        return CollectionContainer.collection;
+        return collection;
+    }
+
+    public java.time.ZonedDateTime getCreationDate() {
+        return creationDate;
     }
 }
