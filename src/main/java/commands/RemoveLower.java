@@ -7,13 +7,14 @@ import vehicle.Vehicle;
 import vehicle.VehicleInputReader;
 import vehicle.VehicleParser;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class RemoveLower implements Command{
     public RemoveLower(){}
 
     @Override
-    public String execute(String argument) {
+    public String execute(String argument) throws IOException {
         Vehicle vehicle;
         if (argument == null){
             vehicle = new VehicleInputReader().readVehicle();

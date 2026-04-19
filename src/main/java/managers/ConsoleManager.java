@@ -1,52 +1,72 @@
 package managers;
 
-import commands.*;
+import org.jline.reader.EndOfFileException;
+import org.jline.reader.LineReader;
+import org.jline.reader.LineReaderBuilder;
+import org.jline.reader.UserInterruptException;
+import org.jline.terminal.Terminal;
+import org.jline.terminal.TerminalBuilder;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class ConsoleManager {
-    private final BufferedReader reader;
-    private static boolean isRunning;
+    private static LineReader lineReader;
+    private static boolean isRunning = true;
 
-    public ConsoleManager() {
-        this.reader = new BufferedReader(new InputStreamReader(System.in));
-        isRunning = true;
+    static {
+        System.setProperty("org.jline.terminal.provider", "exec");
+    }
+
+
+    public ConsoleManager() throws IOException {
+        Terminal terminal = TerminalBuilder.builder()
+                .system(true)
+                .build();
+
+        this.lineReader = LineReaderBuilder.builder()
+                .terminal(terminal)
+                .appName("VehicleConsole")
+                .build();
     }
 
     public void start() throws IOException {
         while (isRunning) {
-            print("> ");
-            String input = readLine();
+            String input = readLine("> ");
             if (input == null) {
                 break;
             }
             if (input.trim().isEmpty()) {
                 continue;
             }
-            if (input.equals("exit")) {
+            if ("exit".equalsIgnoreCase(input.trim())) {
                 println("bye! ;p");
                 break;
             }
+
+            lineReader.getHistory().add(input);
+
             new CommandManager().executeCommand(input);
         }
     }
 
-    public String readLine() {
+    public static LineReader getReader() { return lineReader; }
+
+    public static String readLine(String prompt) {
         try {
-            return reader.readLine();
-        } catch (IOException e) {
+            return lineReader.readLine(prompt);
+        } catch (UserInterruptException | EndOfFileException e) {
+            return null;
+        } catch (Exception e) {
             System.err.println("error reading data: " + e.getMessage());
             return null;
         }
     }
 
-    public void println(String output) {
+    public static void println(String output) {
         System.out.println(output);
     }
 
-    public void print(String output) {
+    public static void print(String output) {
         System.out.print(output);
     }
 

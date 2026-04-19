@@ -5,11 +5,13 @@ package commands;
 import vehicle.VehicleInputReader;
 import vehicle.VehicleParser;
 
+import java.io.IOException;
+
 public class Add implements Command {
     public Add(){}
 
     @Override
-    public String execute(String argument) {
+    public String execute(String argument) throws IOException {
         if (argument == null){
             collection.add(new VehicleInputReader().readVehicle());
         } else {

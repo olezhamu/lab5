@@ -2,17 +2,19 @@ package vehicle;
 
 import managers.ConsoleManager;
 
+import java.io.IOException;
+
 public class VehicleParser {
-    public static Vehicle parse(String line) {
+    public static Vehicle parse(String line) throws IOException {
         String[] parts = line.split(" ");
         if ((parts.length < 6) || (parts.length > 7)) {
-            new ConsoleManager().println("wrong number of fields, expected: name x y enginePower capacity (optional) fuelConsumption vehicleType");
+            ConsoleManager.println("wrong number of fields, expected: name x y enginePower capacity (optional) fuelConsumption vehicleType");
             return null;
         }
 
         String name = parts[0].trim();
         if (name == null || name.isEmpty()) {
-            new ConsoleManager().println("name can't be empty");
+            ConsoleManager.println("name can't be empty");
             return null;
         }
 
@@ -21,13 +23,13 @@ public class VehicleParser {
 
         long enginePower = Long.parseLong(parts[3]);
         if (enginePower <= 0) {
-            new ConsoleManager().println("engine power must be grater then 0");
+            ConsoleManager.println("engine power must be grater then 0");
             return null;
         }
 
         long capacity = Long.parseLong(parts[4]);
         if (capacity <= 0) {
-            new ConsoleManager().println("engine power must be grater then 0");
+            ConsoleManager.println("engine power must be grater then 0");
             return null;
         }
 
@@ -36,7 +38,7 @@ public class VehicleParser {
         if (parts.length == 7) {
             fuelConsumption = Double.parseDouble(parts[partsToken]);
             if (fuelConsumption <= 0) {
-                new ConsoleManager().println("fuel consumption must be grater then 0");
+                ConsoleManager.println("fuel consumption must be grater then 0");
                 return null;
             }
             partsToken ++;
@@ -46,7 +48,7 @@ public class VehicleParser {
         try {
             vehicleType = VehicleType.valueOf(parts[partsToken].trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            new ConsoleManager().println("unknown type, available types: " + java.util.Arrays.toString(VehicleType.values()));
+            ConsoleManager.println("unknown type, available types: " + java.util.Arrays.toString(VehicleType.values()));
             return null;
         }
 

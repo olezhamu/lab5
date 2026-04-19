@@ -33,6 +33,9 @@ public class FileManager {
                     .map(String::trim)
                     .filter(line -> !line.isEmpty())
                     .collect(Collectors.toList());
+        } catch (Exception e) {
+            ConsoleManager.println("file doesn't exist");
+            return null;
         }
     }
 
@@ -47,7 +50,7 @@ public class FileManager {
             ArrayList<Vehicle> collection = objectMapper.readValue(reader, new TypeReference<ArrayList<Vehicle>>() {});
             CollectionContainer.setCollection(new LinkedList<>(collection));
         } catch (Exception e) {
-            new ConsoleManager().println("error reading JSON: " + e.getMessage());
+            ConsoleManager.println("error reading JSON: " + e.getMessage());
         }
     }
 
@@ -61,7 +64,7 @@ public class FileManager {
         try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
             objectMapper.writeValue(writer, collection);
         } catch (Exception e) {
-            new ConsoleManager().println("error writing JSON: " + e.getMessage());
+            ConsoleManager.println("error writing JSON: " + e.getMessage());
         }
     }
 }

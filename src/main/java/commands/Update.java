@@ -6,11 +6,13 @@ import vehicle.Vehicle;
 import vehicle.VehicleInputReader;
 import vehicle.VehicleParser;
 
+import java.io.IOException;
+
 public class Update implements Command{
     public Update(){}
 
     @Override
-    public String execute(String argument) {
+    public String execute(String argument) throws IOException {
         try {
             String[] parts = argument.split("\\s+", 2);
             Integer id = Integer.valueOf(parts[0]);

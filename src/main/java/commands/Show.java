@@ -10,6 +10,9 @@ public class Show implements Command{
     @Override
     public String execute(String argument) {
         String output = "";
+        if (collection.isEmpty()){
+            output = "collection is empty";
+        }
         for (Vehicle vehicle : collection) {
             output += vehicle.getInfo();
         }

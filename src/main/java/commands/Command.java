@@ -1,5 +1,7 @@
 package commands;
 
+import managers.ConsoleManager;
+import org.jline.reader.LineReader;
 import utils.CollectionContainer;
 import vehicle.Vehicle;
 

@@ -16,10 +16,10 @@ public class CommandManager {
 
         Command command = commandContainer.get(commandName);
         if (command == null) {
-            new ConsoleManager().println("unknown command: " + commandName);
-            new ConsoleManager().println("input 'help' for list of available commands");
+            ConsoleManager.println("unknown command: " + commandName);
+            ConsoleManager.println("input 'help' for list of available commands");
             return;
         }
-        new ConsoleManager().println(command.execute(argument));
+        ConsoleManager.println(command.execute(argument));
     }
 }
