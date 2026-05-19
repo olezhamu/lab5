@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class ExecuteScript implements ClientCommand{
 
     @Override
-    public Object execute(String argument) throws IOException {
-        String fileName = argument.trim();
+    public Object execute(String arg) throws IOException {
+        String fileName = arg.trim();
         List<String> lines = new LinkedList<>();
 
         lines.add(fileName);

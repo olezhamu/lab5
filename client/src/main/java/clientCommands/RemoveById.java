@@ -2,14 +2,21 @@
 
 package clientCommands;
 
+import client.Client;
+
 public class RemoveById implements ClientCommand {
     public RemoveById(){}
 
     @Override
     public Object execute(String arg) {
-        Integer output = Integer.parseInt(arg);
+        try {
+            Integer output = Integer.parseInt(arg);
 
-        return output;
+            return output;
+        } catch (NumberFormatException e) {
+            Client.println("wrong format of data");
+            return null;
+        }
     }
 
     @Override

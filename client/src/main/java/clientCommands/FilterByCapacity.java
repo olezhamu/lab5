@@ -2,14 +2,21 @@
 
 package clientCommands;
 
+import client.Client;
+
 public class FilterByCapacity implements ClientCommand {
     public FilterByCapacity(){}
 
     @Override
     public Object execute(String arg) {
-        long output = Long.parseLong(arg);
+        try {
+            long output = Long.parseLong(arg);
 
-        return output;
+            return output;
+        } catch (NumberFormatException e) {
+            Client.println("wrong format of data");
+            return null;
+        }
     }
 
     @Override

@@ -13,6 +13,10 @@ public class ClientCommandManager {
     public CommandRequest executeCommand(String commandName, String argument) throws IOException {
         ClientCommand command = commandContainer.get(commandName);
         Object output = command.execute(argument);
-        return new CommandRequest(commandName, output);
+        if (output != null) {
+            return new CommandRequest(commandName, output);
+        }else{
+            return null;
+        }
     }
 }

@@ -3,6 +3,7 @@
 package clientCommands;
 
 import Vehicle.VehicleInputReader;
+import client.Client;
 
 import java.io.IOException;
 
@@ -13,7 +14,12 @@ public class Update implements ClientCommand {
     public Object execute(String arg) throws IOException {
         Object[] output = new Object[0];
 
-        output[0] = Integer.parseInt(arg);
+        try {
+            output[0] = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            Client.println("wrong format of data");
+            return null;
+        }
         output[1] = new VehicleInputReader().readVehicle();
 
         return output;

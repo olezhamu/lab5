@@ -53,6 +53,8 @@ public class Client {
             try {
                 CommandRequest request = clientCommandManager.executeCommand(command, argument);
 
+                if (request == null){continue;}
+
                 connectToServer();
                 sendRequest(request);
                 CommandResponse response = receiveResponse();

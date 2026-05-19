@@ -11,10 +11,9 @@ public class Save implements ClientCommand {
 
     @Override
     public Object execute(String arg) throws IOException {
-        Object output = arg;
         Client.println("this command is not available for client");
 
-        return output;
+        return null;
     }
 
     @Override
